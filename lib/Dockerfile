@@ -159,7 +159,7 @@ RUN apt-get update -y \
 #    && make install
 
 #Install LIPMWalking controller
-WORKDIR /root/lib
+WORKDIR /root/
 RUN git clone --recursive https://github.com/jrl-umi3218/lipm_walking_controller.git ~/devel/src/lipm_walking_controller \
     && mkdir -p ~/devel/src/lipm_walking_controller/build \
     && cd ~/devel/src/lipm_walking_controller/build \
