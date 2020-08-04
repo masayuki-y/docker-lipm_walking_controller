@@ -8,27 +8,29 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN set -x \
     && apt update \
-    && apt install -y \
-        git \
-        wget \
+#    && apt upgrade -y\
+    && apt install -y cmake cython doxygen g++ git gfortran libboost-all-dev libeigen3-dev libgeos++-dev libnanomsg-dev libtinyxml2-dev python-coverage python-nose python-numpy python-pip python-setuptools \
+#        git \
+#        wget \
         apt-utils \
         apt-transport-https \
         software-properties-common \
-        libtbb2 \
-        libtbb-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libopenblas-dev \
-        libboost-all-dev \
-        libfann-dev \
-        libunwind-dev \
+        nano \
+#        libtbb2 \
+#        libtbb-dev \
+#        libjpeg-dev \
+#        libpng-dev \
+#        libtiff-dev \
+#        libopenblas-dev \
+#        libboost-all-dev \
+#        libfann-dev \
+#        libunwind-dev \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
     && echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list \
     && apt update \
     && apt install -y \
 	ros-melodic-desktop-full \
-#	 ros-melodic-usb-cam \
+    ros-melodic-eigenpy \
 	python-rosdep \
     && rosdep init\
     && rosdep update\
@@ -52,13 +54,25 @@ RUN apt-get update -y \
     # Update packages list
     && apt-get -qq update -y \
     # Install required dependencies, Choreonoid, JVRC1 sample project and mc_rtc tools
-    && apt install -y libeigen3-dev doxygen libboost-all-dev libmc-rtc-dev libcopra-dev mc-openrtm jvrc-choreonoid mc-rtc-utils ros-melodic-mc-rtc-tools 
+    # && apt install -y libeigen3-dev doxygen libboost-all-dev libmc-rtc-dev libcopra-dev mc-openrtm jvrc-choreonoid mc-rtc-utils ros-melodic-mc-rtc-tools
+    && apt install -y python-eigen python3-eigen libcopra-dev libmc-rtc-dev mc-rtc-utils python3-mc-rtc mc-openrtm jvrc-choreonoid ros-melodic-mc-rtc-*
 
 # Install JRL dependencies
-# WORKDIR /root/lib
-#RUN git clone --recursive https://github.com/jrl-umi3218/mc_rtc.git \#~/devel/src/mc_rtc \
-#    && cd mc_rtc/src/mc_rtc/utils \
-#    && ./build_and_install.sh
+#WORKDIR /root/lib
+##RUN git clone --recursive https://github.com/jrl-umi3218/Eigen3ToPython \\
+#ayumi:~/Software/Eigen3ToPython/build$ cmake .. -DCMAKE_BUILD_TYPE=Release
+#ayumi:~/Software/Eigen3ToPython/build$ make -j4
+#ayumi:~/Software/Eigen3ToPython/build$ sudo make install
+
+#RUN git clone --recursive https://github.com/jrl-umi3218/mc_rtc.git \ 
+#~/devel/src/mc_rtc \
+#    && cd mc_rtc/ \
+#    && mkdir -p build \
+#    && cd build \
+#    && cmake .. -DCMAKE_BUILD_TYPE=Release \
+#    && make -j$(nproc) \
+#    && make install
+##    && ./build_and_install.sh
 # Make sure you have required tools
 #RUN apt update \
 #    && sudo apt install apt-transport-https lsb-release ca-certificates gnupg \
@@ -104,8 +118,9 @@ RUN apt-get update -y \
 #    && make -j$(nproc) \
 #    && make install
 
-#RUN apt-get update -y \
-#    && apt-get install -y f2c gettext liblapack-dev libomniorb4-dev libyaml-dev omniidl omniidl-python software-properties-common 
+#WORKDIR /root/
+RUN apt-get update -y \
+    && apt-get install -y f2c gettext liblapack-dev libomniorb4-dev libyaml-dev omniidl omniidl-python 
 
 #Install OpenRTM
 #WORKDIR /root/lib
