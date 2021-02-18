@@ -14,4 +14,5 @@ services:
             # to tansport X11 application (require xhost local:)
             - /tmp/.X11-unix:/tmp/.X11-unix:rw
             # ros catkin dir
-            # - ./catkin_ws:/root/catkin_ws
+            - ./catkin_ws:/root/catkin_ws
+            - ./ros:/root/ros/
