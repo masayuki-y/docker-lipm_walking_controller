@@ -191,7 +191,7 @@ WORKDIR /root/
 ADD ./mc_hrp4j /root/mc_hrp4j
 RUN cd ./mc_hrp4j \
     && mkdir -p build \
-    && cd  build
+    && cd build \
     && cmake .. \
     && make -j$(nproc) \
     && make install 
