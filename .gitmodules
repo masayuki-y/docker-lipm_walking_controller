@@ -1,10 +1,10 @@
 [submodule "catkin_ws/src/hrp4j_description"]
 	path = catkin_ws/src/hrp4j_description
-	url = https://gite.lirmm.fr/mc-hrp4/hrp4j_description.git 
+	url = https://gite.lirmm.fr/mc-hrp4/hrp4j_description.git
 [submodule "ros/lipm_walking_controller"]
 	path = ros/lipm_walking_controller
 	url = https://github.com/jrl-umi3218/lipm_walking_controller
 [submodule "ros/mc_hrp4j"]
-        path = ros/mc_hrp4j
-        url = https://gite.lirmm.fr/mc-hrp4/mc_hrp4j.git
+	path = ros/mc_hrp4j
+	url = https://gite.lirmm.fr/mc-hrp4/mc_hrp4j.git
 

@@ -187,13 +187,13 @@ RUN cd ./lipm_walking_controller \
     && make install 
 
 #Install mc_hrp4j
-WORKDIR /root/
-ADD ./mc_hrp4j /root/mc_hrp4j
-RUN cd ./mc_hrp4j \
-    && mkdir -p build \
-    && cd build \
-    && cmake .. \
-    && make -j$(nproc) \
-    && make install 
+#WORKDIR /root/
+#ADD ./mc_hrp4j /root/mc_hrp4j
+#RUN cd ./mc_hrp4j \
+#    && mkdir -p build \
+#    && cd build \
+#    && cmake .. \
+#    && make -j$(nproc) \
+#    && make install 
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
