@@ -2,17 +2,21 @@
 ## Instllation & Set up
 
 1. Install nvidia-docker2 & docker-compose
-2. Build docker
-
+2. Clone this repository with necessary submodules
  ```
- $ sudo docker-compose build
+ $ git clone --recursive https://github.com/ayuguchi/docker-lipm_walking_controller.git
+ ```
+
+3. Build docker
+ ```
+ $ docker-compose build
  ```
 
 ## How to use
 
 1. Run docker
  ```
- $ sudo docker-compose run ros bash
+ $ docker-compose run ros bash
  ```
 
 2. Add a mc_rtc configulation file
