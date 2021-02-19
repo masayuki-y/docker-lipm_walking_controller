@@ -174,12 +174,16 @@ RUN apt-get update -y \
 #    && make install
 
 #Install LIPMWalking controller
-#WORKDIR /root/
+WORKDIR /root/
+ADD ./lipm_walking_controller /root/lipm_walking_controller
 #RUN git clone --recursive https://github.com/jrl-umi3218/lipm_walking_controller.git ~/devel/src/lipm_walking_controller \
+RUN cd ./lipm_walking_controller \
+    && mkdir -p build \
+    && cd build \
 #    && mkdir -p ~/devel/src/lipm_walking_controller/build \
 #    && cd ~/devel/src/lipm_walking_controller/build \
-#    && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-#    && make -j$(nproc) \
-#    && make install
+    && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    && make -j$(nproc) \
+    && make install 
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
