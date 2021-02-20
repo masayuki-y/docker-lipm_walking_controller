@@ -30,18 +30,37 @@
   "Enabled": ["LIPMWalking"]
  }
  ```
-3. Run some software
+
+
+ 3. Add a mc_hrp4j
+  ```
+
+  $ source devel/setuo.bash
+
+  $ cd /root/ros/mc_hrp4j
+  $ cd build
+  $ cmake ..
+  $ make
+  $ sudo make install
+ ```
+
+ Chake whether can use hrp4J model
+ ```
+ $ roslaunch mc_surfaces_visualization display.launch robot:=HRP4J
+ ```
+
+ 4. Run some software
  ```
  $ roslaunch mc_rtc_ticker display.launch
 
  (open a new terminal)
- $ sudo docker exec -it ${CONTAINER} bash 
+ $ sudo docker exec -it ${CONTAINER} bash
  $ cd /usr/share/hrpsys/samples/JVRC1
  $ ./clear-omninames.sh
  $ choreonoid --start-simulation sim_mc.cnoid
  ```
 
-4. To get more information, please see the following information.
+5. To get more information, please see the following information.
 
 https://jrl-umi3218.github.io/lipm_walking_controller/doxygen/HEAD/build.html#jvrc
 
