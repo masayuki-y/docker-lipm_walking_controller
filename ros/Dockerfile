@@ -42,7 +42,7 @@ RUN set -x \
         python-wstool \
         build-essential \
 #        ros-melodic-image-transport \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/*
 
 # Make sure you have required tools
 RUN apt-get update -y \
@@ -64,7 +64,7 @@ RUN apt-get update -y \
 #ayumi:~/Software/Eigen3ToPython/build$ make -j4
 #ayumi:~/Software/Eigen3ToPython/build$ sudo make install
 
-#RUN git clone --recursive https://github.com/jrl-umi3218/mc_rtc.git \ 
+#RUN git clone --recursive https://github.com/jrl-umi3218/mc_rtc.git \
 #~/devel/src/mc_rtc \
 #    && cd mc_rtc/ \
 #    && mkdir -p build \
@@ -120,7 +120,7 @@ RUN apt-get update -y \
 
 #WORKDIR /root/
 RUN apt-get update -y \
-    && apt-get install -y f2c gettext liblapack-dev libomniorb4-dev libyaml-dev omniidl omniidl-python 
+    && apt-get install -y f2c gettext liblapack-dev libomniorb4-dev libyaml-dev omniidl omniidl-python
 
 #Install OpenRTM
 #WORKDIR /root/lib
@@ -184,7 +184,12 @@ RUN cd ./lipm_walking_controller \
 #    && cd ~/devel/src/lipm_walking_controller/build \
     && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     && make -j$(nproc) \
-    && make install 
+    && make install
+
+# Add thomas-schiex's PPA to install blender
+RUN add-apt-repository -y ppa:thomas-schiex/blender \
+    && apt-get update -y \
+    && apt-get -qq install -y blender
 
 #Install mc_hrp4j
 #WORKDIR /root/
@@ -194,6 +199,6 @@ RUN cd ./lipm_walking_controller \
 #    && cd build \
 #    && cmake .. \
 #    && make -j$(nproc) \
-#    && make install 
+#    && make install
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
