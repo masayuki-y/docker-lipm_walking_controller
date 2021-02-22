@@ -6,8 +6,14 @@
  ```
  $ git clone --recursive https://github.com/ayuguchi/docker-lipm_walking_controller.git
  ```
+3. update sub submodules
 
-3. Build docker
+```
+$ git submodule sync --recursive
+$ git submodule update --init --recursive
+```
+
+4. Build docker
  ```
  $ docker-compose build
  ```
