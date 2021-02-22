@@ -55,7 +55,7 @@ RUN apt-get update -y \
     && apt-get -qq update -y \
     # Install required dependencies, Choreonoid, JVRC1 sample project and mc_rtc tools
     # && apt install -y libeigen3-dev doxygen libboost-all-dev libmc-rtc-dev libcopra-dev mc-openrtm jvrc-choreonoid mc-rtc-utils ros-melodic-mc-rtc-tools
-    && apt install -y python-eigen python3-eigen libcopra-dev libmc-rtc-dev mc-rtc-utils python3-mc-rtc mc-openrtm jvrc-choreonoid ros-melodic-mc-rtc-*
+    && apt install -y python-eigen python3-eigen libcopra-dev libmc-rtc-dev mc-rtc-utils python3-mc-rtc  jvrc-choreonoid ros-melodic-mc-rtc-*
 
 # Install JRL dependencies
 #WORKDIR /root/lib
@@ -165,13 +165,13 @@ RUN apt-get update -y \
 #    && make install
 
 #Install mc_openrtm
-#WORKDIR /root/lib
-#RUN git clone --recursive https://github.com/jrl-umi3218/mc_openrtm.git ~/devel/src/mc_openrtm \
-#    && mkdir -p ~/devel/src/mc_openrtm/build \
-#    && cd ~/devel/src/mc_openrtm/build \
-#    && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-#    && make -j$(nproc) \
-#    && make install
+WORKDIR /root/lib
+RUN git clone --recursive https://github.com/jrl-umi3218/mc_openrtm.git ~/devel/src/mc_openrtm \
+    && mkdir -p ~/devel/src/mc_openrtm/build \
+    && cd ~/devel/src/mc_openrtm/build \
+    && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    && make -j$(nproc) \
+    && make install
 
 #Install LIPMWalking controller
 WORKDIR /root/

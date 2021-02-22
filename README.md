@@ -35,7 +35,7 @@
  3. Add a mc_hrp4j
   ```
 
-  $ source devel/setuo.bash
+  $ source devel/setup.bash
 
   $ cd /root/ros/mc_hrp4j
   $ cd build
@@ -64,7 +64,7 @@
  ```
 To use blender2.57
 
-$ cd  blender_2_5_7 
+$ cd  blender_2_5_7
 $ ./blender
 
  ```
