@@ -184,7 +184,7 @@ RUN cd ./lipm_walking_controller \
 #    && cd ~/devel/src/lipm_walking_controller/build \
     && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     && make -j$(nproc) \
-    && make install
+    && make install 
 
 # Add thomas-schiex's PPA to install blender
 RUN add-apt-repository -y ppa:thomas-schiex/blender \
