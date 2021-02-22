@@ -184,12 +184,21 @@ RUN cd ./lipm_walking_controller \
 #    && cd ~/devel/src/lipm_walking_controller/build \
     && cmake ../ -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     && make -j$(nproc) \
-    && make install 
+    && make install
 
 # Add thomas-schiex's PPA to install blender
 RUN add-apt-repository -y ppa:thomas-schiex/blender \
     && apt-get update -y \
     && apt-get -qq install -y blender
+
+# Install Blender addon
+WORKDIR /root/
+RUN mkdir -p .config/blender/$(blender -v|awk '{print $2}') \
+    && mkdir -p .config/blender/$(blender -v|awk '{print $2}')/scripts/addons \
+    && cd .config/blender/$(blender -v|awk '{print $2}')/scripts/addons \
+    && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git
+#    && cd robot_script \
+#    && cp -R blender_addons/io_qconvex/  /root/.config/blender/$(blender -v|awk '{print $2}')/scripts/addons
 
 #Install mc_hrp4j
 #WORKDIR /root/
