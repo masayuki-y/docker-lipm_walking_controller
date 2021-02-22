@@ -193,12 +193,12 @@ RUN add-apt-repository -y ppa:thomas-schiex/blender \
 
 # Install Blender addon
 WORKDIR /root/
-RUN mkdir -p .config/blender/$(blender -v|awk '{print $2}') \
-    && mkdir -p .config/blender/$(blender -v|awk '{print $2}')/scripts/addons \
-    && cd .config/blender/$(blender -v|awk '{print $2}')/scripts/addons \
-    && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git
-#    && cd robot_script \
-#    && cp -R blender_addons/io_qconvex/  /root/.config/blender/$(blender -v|awk '{print $2}')/scripts/addons
+RUN mkdir -p .config/blender/2.90.1 \
+    && mkdir -p .config/blender/2.90.1/scripts/addons \
+    && cd .config/blender/2.90.1/scripts/addons \
+    && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git \
+    && cd ~/.config/blender/2.90.1/scripts/addons/robot_script \
+    && cp -r blender_addons/io_qconvex/  /root/.config/blender/2.90.1/scripts/addons
 
 #Install mc_hrp4j
 #WORKDIR /root/
