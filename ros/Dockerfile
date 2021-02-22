@@ -11,7 +11,7 @@ RUN set -x \
 #    && apt upgrade -y\
     && apt install -y cmake cython doxygen g++ git gfortran libboost-all-dev libeigen3-dev libgeos++-dev libnanomsg-dev libtinyxml2-dev python-coverage python-nose python-numpy python-pip python-setuptools \
 #        git \
-#        wget \
+#       wget \
         apt-utils \
         apt-transport-https \
         software-properties-common \
@@ -187,9 +187,22 @@ RUN cd ./lipm_walking_controller \
     && make install
 
 # Add thomas-schiex's PPA to install blender
-RUN add-apt-repository -y ppa:thomas-schiex/blender \
-    && apt-get update -y \
-    && apt-get -qq install -y blender
+# RUN add-apt-repository -y ppa:thomas-schiex/blender \
+#    && apt-get update -y \
+#    && apt-get -qq install -y blender
+
+# Install wget command to install blender2.57
+WORKDIR /root/
+RUN apt-get update \
+    && apt-get install -y wget
+
+# Install Blender_ver_2.5.7
+WORKDIR /root/
+RUN mkdir -p blender_2_5_7 \
+    && cd  blender_2_5_7 \
+    && wget https://download.blender.org/release/Blender2.57/blender-2.57b-linux-glibc27-x86_64.tar.bz2  \
+    && tar -jxvf blender-2.57b-linux-glibc27-x86_64.tar.bz2 blender-2.57b-linux-glibc27-x86_64 \
+    && cd blender-2.57b-linux-glibc27-x86_64
 
 # Install Blender addon
 WORKDIR /root/

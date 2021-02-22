@@ -58,6 +58,15 @@
  $ cd /usr/share/hrpsys/samples/JVRC1
  $ ./clear-omninames.sh
  $ choreonoid --start-simulation sim_mc.cnoid
+
+ ```
+
+ ```
+To use blender2.57
+
+$ cd  blender_2_5_7 
+$ ./blender
+
  ```
 
 5. To get more information, please see the following information.
