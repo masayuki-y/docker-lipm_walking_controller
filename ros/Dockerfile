@@ -222,5 +222,5 @@ RUN mkdir -p .config/blender/2.90.1 \
 #    && cmake .. \
 #    && make -j$(nproc) \
 #    && make install
-WORKDIR /root
+WORKDIR /root/catkin_ws
 CMD [ "bash" ]

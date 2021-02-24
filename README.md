@@ -38,6 +38,7 @@
   $ source devel/setup.bash
 
   $ cd /root/ros/mc_hrp4j
+  $ mkdir build
   $ cd build
   $ cmake ..
   $ make
