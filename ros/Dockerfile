@@ -204,14 +204,11 @@ RUN mkdir -p blender_2_5_7 \
     && tar -jxvf blender-2.57b-linux-glibc27-x86_64.tar.bz2 blender-2.57b-linux-glibc27-x86_64 \
     && cd blender-2.57b-linux-glibc27-x86_64
 
-# Install Blender addon
+# Install Blender addon by zip
 WORKDIR /root/
-RUN mkdir -p .config/blender/2.90.1 \
-    && mkdir -p .config/blender/2.90.1/scripts/addons \
-    && cd .config/blender/2.90.1/scripts/addons \
-    && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git \
-    && cd ~/.config/blender/2.90.1/scripts/addons/robot_script \
-    && cp -r blender_addons/io_qconvex/  /root/.config/blender/2.90.1/scripts/addons
+RUN mkdir -p addons \
+    && cd addons \
+    && wget https://gite.lirmm.fr/multi-contact/robot_script/-/archive/master/robot_script-master.zip
 
 #Install mc_hrp4j
 #WORKDIR /root/
