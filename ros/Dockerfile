@@ -196,18 +196,28 @@ WORKDIR /root/
 RUN apt-get update \
     && apt-get install -y wget
 
-# Install Blender_ver_2.5.7
+# Install Blender_ver_2.78
 WORKDIR /root/
-RUN mkdir -p blender_2_5_7 \
-    && cd  blender_2_5_7 \
+RUN mkdir -p blender_2_78 \
+    && cd  blender_2_78 \
     && wget https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2  \
-    && tar -jxvf blender-2.78c-linux-glibc219-x86_64.tar.bz2 blender-2.78c-linux-glibc219-x86_64 
+    && tar -jxvf blender-2.78c-linux-glibc219-x86_64.tar.bz2 blender-2.78c-linux-glibc219-x86_64
 
 # Install Blender addon by zip
 WORKDIR /root/
 RUN mkdir -p addons \
     && cd addons \
     && wget https://gite.lirmm.fr/multi-contact/robot_script/-/archive/master/robot_script-master.zip
+
+# Install Blender addon with git clone
+WORKDIR /root/
+RUN mkdir -p .config/blender/2.78 \
+    && mkdir -p .config/blender/2.78/scripts/addons \
+    && cd .config/blender/2.78/scripts/addons \
+    && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git \
+    && cd ~/.config/blender/2.78/scripts/addons/robot_script \
+    && cp -r blender_addons/io_qconvex/  /root/.config/blender/2.78/scripts/addons
+
 
 #Install mc_hrp4j
 #WORKDIR /root/
