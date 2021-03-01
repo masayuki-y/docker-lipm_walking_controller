@@ -191,7 +191,7 @@ RUN cd ./lipm_walking_controller \
 #    && apt-get update -y \
 #    && apt-get -qq install -y blender
 
-# Install wget command to install blender2.57
+# Install wget command to install blender2.78
 WORKDIR /root/
 RUN apt-get update \
     && apt-get install -y wget
@@ -200,9 +200,8 @@ RUN apt-get update \
 WORKDIR /root/
 RUN mkdir -p blender_2_5_7 \
     && cd  blender_2_5_7 \
-    && wget https://download.blender.org/release/Blender2.57/blender-2.57b-linux-glibc27-x86_64.tar.bz2  \
-    && tar -jxvf blender-2.57b-linux-glibc27-x86_64.tar.bz2 blender-2.57b-linux-glibc27-x86_64 \
-    && cd blender-2.57b-linux-glibc27-x86_64
+    && wget https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2  \
+    && tar -jxvf blender-2.78c-linux-glibc219-x86_64.tar.bz2 blender-2.78c-linux-glibc219-x86_64 
 
 # Install Blender addon by zip
 WORKDIR /root/
