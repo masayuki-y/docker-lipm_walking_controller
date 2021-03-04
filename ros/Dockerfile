@@ -201,7 +201,46 @@ WORKDIR /root/
 RUN mkdir -p blender_2_78 \
     && cd  blender_2_78 \
     && wget https://download.blender.org/release/Blender2.78/blender-2.78c-linux-glibc219-x86_64.tar.bz2  \
-    && tar -jxvf blender-2.78c-linux-glibc219-x86_64.tar.bz2 blender-2.78c-linux-glibc219-x86_64
+    && tar -jxvf blender-2.78c-linux-glibc219-x86_64.tar.bz2 blender-2.78c-linux-glibc219-x86_64 \
+    && mv blender-2.78c-linux-glibc219-x86_64 $root/blender2.78 \
+    && mv $root/blender2.78 /opt/ \
+    && ln -s /opt/blender2.78/blender /usr/bin/blender
+
+#    && cd ~/blender_2_78/blender-2.78c-linux-glibc219-x86_64 \
+#    && apt -y build-dep blender \
+#    && apt -y install \
+#    libx11-dev \
+#    libxi-dev \
+#    libsndfile1-dev \
+#    libopenexr-dev \
+#    libjpeg-dev \
+#    libopenal-dev \
+#    libalut-dev \
+#    libglu1-mesa-dev \
+#    libsdl-dev \
+#    libfreetype6-dev \
+#    libavdevice-dev \
+#    libavformat-dev \
+#    libavutil-dev \
+#    libavcodec-dev \
+#    libswscale-dev \
+#    libx264-dev \
+#    libxvidcore-dev \
+#    libmp3lame-dev \
+#    libspnav-dev
+
+
+
+
+# Install snap command
+#WORKDIR /root/
+#RUN apt-get update -y \
+#    && apt-get upgrade -y \
+#    && apt-get  install -y  snap
+
+# Install Blender_ver_2.79 by snap
+#WORKDIR /root/
+#RUN apt install blender --channel=2.79/stable --classic
 
 # Install Blender addon by zip
 WORKDIR /root/
@@ -217,6 +256,18 @@ RUN mkdir -p .config/blender/2.78 \
     && git clone --recursive https://gite.lirmm.fr/multi-contact/robot_script.git \
     && cd ~/.config/blender/2.78/scripts/addons/robot_script \
     && cp -r blender_addons/io_qconvex/  /root/.config/blender/2.78/scripts/addons
+
+# Install Blender moedel
+WORKDIR /root/
+RUN mkdir blender_model \
+    && cd blender_model \
+    && wget  https://jrl-umi3218.github.io/mc_rtc/tutorials/advanced/data/blender_model_final.blend
+
+# wget shelf moedel as wrl from github
+WORKDIR /root/
+RUN mkdir shelf_model \
+    && cd shelf_model \
+    && git clone https://github.com/masayuki-y/Test-model-file-with-wget.git
 
 
 #Install mc_hrp4j
