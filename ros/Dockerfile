@@ -231,17 +231,6 @@ RUN mkdir -p blender_2_78 \
 
 
 
-
-# Install snap command
-#WORKDIR /root/
-#RUN apt-get update -y \
-#    && apt-get upgrade -y \
-#    && apt-get  install -y  snap
-
-# Install Blender_ver_2.79 by snap
-#WORKDIR /root/
-#RUN apt install blender --channel=2.79/stable --classic
-
 # Install Blender addon by zip
 WORKDIR /root/
 RUN mkdir -p addons \
@@ -267,7 +256,10 @@ RUN mkdir blender_model \
 WORKDIR /root/
 RUN mkdir shelf_model \
     && cd shelf_model \
-    && git clone https://github.com/masayuki-y/Test-model-file-with-wget.git
+    && git clone https://github.com/masayuki-y/Test-model-file-with-wget.git \
+    && cd Test-model-file-with-wget \
+    && git checkout add_wrl_files \
+    && git pull
 
 
 #Install mc_hrp4j
