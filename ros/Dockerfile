@@ -259,7 +259,31 @@ RUN mkdir shelf_model \
     && git clone https://github.com/masayuki-y/Test-model-file-with-wget.git \
     && cd Test-model-file-with-wget \
     && git checkout add_wrl_files \
+    && apt -y install emacs \
     && git pull
+
+# git clone repository
+WORKDIR /root/
+RUN mkdir github \
+    && cd  github\
+    && git clone https://github.com/masayuki-y/mc_rtc_tutorial_controller.git \
+    && git config --global user.name "masayuki-y" \
+    && git config --global user.email "yamada.masayuki.yk6@is.naist.jp" \
+#    && git clone https://github.com/masayuki-y/mc_rtc_tutorial_controller.git \
+    && git init \
+    && cd  /root/github/mc_rtc_tutorial_controller \
+    && git fetch --all \
+    && git checkout controll_EF
+
+#clone repository and make install
+#WORKDIR /root/
+#RUN mkdir Mygithub \
+#    && cd Mygithub \
+#    && git config --global user.email "yamada.masayuki.yk6@is.naist.jp" \
+#    && git clone  https://61ca76807ac5b994e1d5ad3adab0ceb2fe22f166:@github.com/masayuki-y/mc_rtc_tutorial_controller.git \
+#    && git clone https://61ca76807ac5b994e1d5ad3adab0ceb2fe22f166:x-oauth-basic@github.com/masayuki-y/mc_rtc_tutorial_controller.git \
+#    && git clone https://github.com/masayuki-y/mc_rtc_tutorial_controller.git \
+#    && git checkout EF_controller
 
 
 #Install mc_hrp4j
@@ -273,3 +297,5 @@ RUN mkdir shelf_model \
 #    && make install
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
+
+WORKDIR /root
