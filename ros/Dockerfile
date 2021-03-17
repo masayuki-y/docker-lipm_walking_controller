@@ -298,4 +298,9 @@ RUN mkdir github \
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
 
+#Add a mc_rtc configulation file
+WORKDIR /root/
+RUN mkdir -p ~/.config/mc_rtc/ \
+    && touch ~/.config/mc_rtc/mc_rtc.yaml
+
 WORKDIR /root
