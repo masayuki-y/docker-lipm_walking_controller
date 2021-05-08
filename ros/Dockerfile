@@ -273,7 +273,10 @@ RUN mkdir github \
     && git init \
     && cd  /root/github/mc_rtc_tutorial_controller \
     && git fetch --all \
-    && git checkout controll_EF
+#    && git checkout controll_EF
+    && git checkout reach_box
+
+
 
 #clone repository and make install
 #WORKDIR /root/
@@ -298,9 +301,84 @@ RUN mkdir github \
 WORKDIR /root/catkin_ws
 CMD [ "bash" ]
 
+WORKDIR /root/
+ARG GITHUB_USER
+ARG GITHUB_TOKEN
+RUN touch /root/.netrc \
+    && echo machine github.com >> /root/.netrc \
+    && echo login $GITHUB_USER >> /root/.netrc \
+    && echo passowrd $GITHUB_TOKEN >> /root/.netrc
+
+#WORKDIR /root/catkin_ws/src/
+#RUN git clone https://gite.lirmm.fr/mc-hrp4/hrp4j_description.git　\
+#    && catkin build -j4 \
+#    && source devel/setup.bash \
+#    && cd \
+#    && mkdir gitlab \
+#    && git clone https://gite.lirmm.fr/mc-hrp4/mc_hrp4j.git \
+#    && cd mc_hrp4j \
+#    && mkdir build \
+#    && cd build \
+#    && cmake .. \
+#    && make \
+#    && sudo make install \
+#    && rm /root/.netrc
+
+
+#git clone & catkin build hrp4j_description
+#WORKDIR /root/catkin_ws/src
+#RUN git clone https://gite.lirmm.fr/mc-hrp4/hrp4j_description.git \
+#    && cd .. \
+#    && catkin build -j4 \
+#    && source devel/setup.bash
+
+#git clone & catkin build hrp4j_description
+#WORKDIR /root/catkin_ws/src
+#ARG GITHUB_USER
+#ARG GITHUB_TOKEN
+#RUN git clone https://gite.lirmm.fr/mc-hrp4/hrp4j_description.git \
+#    && cd .. \
+#    && catkin build -j4 \
+#    && source devel/setup.bash
+
+#git clone mc_hrp4j
+#WORKDIR /root/
+#ARG GITHUB_USER
+#ARG GITHUB_TOKEN
+#RUN mkdir gitlab \
+#    && git clone https://gite.lirmm.fr/mc-hrp4/mc_hrp4j.git \
+#    && cd mc_hrp4j \
+#    && mkdir build \
+#    && cd build \
+#    && cmake .. \
+#    && make \
+#    && sudo make install
+
 #Add a mc_rtc configulation file
 WORKDIR /root/
 RUN mkdir -p ~/.config/mc_rtc/ \
     && touch ~/.config/mc_rtc/mc_rtc.yaml
+
+# Made controller
+WORKDIR /root/
+RUN mc_rtc_new_controller my_first_controller MyFirstController \
+    && cd my_first_controller \
+    && mkdir -p build \
+    && cd  \
+    && cd github/mc_rtc_tutorial_controller
+
+
+#set up for using catkin build
+WORKDIR /root/
+RUN apt install -y python-catkin-tools
+
+
+
+WORKDIR  /root/github/mc_rtc_tutorial_controller/reach_box
+RUN  cd src \
+     && cp -r .  /root/my_first_controller/src
+
+WORKDIR /root/.config/mc_rtc
+RUN cp /root/github/mc_rtc_tutorial_controller/reach_box/mc_rtc.yaml .
 
 WORKDIR /root
