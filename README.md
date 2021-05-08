@@ -50,6 +50,14 @@
  $ roslaunch mc_surfaces_visualization display.launch robot:=HRP4J
  ```
 
+3-1. add hrp4's model
+
+ git clone HRP4`s model file
+ ```
+WORKDIR /root/catkin_ws/src
+RUN git clone https://gite.lirmm.fr/mc-hrp4/hrp4.git
+ ```
+
  4. Run some software
  ```
  $ roslaunch mc_rtc_ticker display.launch

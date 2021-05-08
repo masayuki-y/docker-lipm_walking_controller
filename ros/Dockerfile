@@ -373,7 +373,6 @@ WORKDIR /root/
 RUN apt install -y python-catkin-tools
 
 
-
 WORKDIR  /root/github/mc_rtc_tutorial_controller/reach_box
 RUN  cd src \
      && cp -r .  /root/my_first_controller/src
