@@ -83,3 +83,24 @@ $ ./blender
 https://jrl-umi3218.github.io/lipm_walking_controller/doxygen/HEAD/build.html#jvrc
 
 https://github.com/stephane-caron/lipm_walking_controller/wiki
+
+
+## How to use pulling box simulation (WIP)
+
+1. Run docker
+ ```
+ $ docker-compose run ros bash
+ ```
+
+2. Run some software
+```
+
+$ roslaunch mc_rtc_ticker display.launch
+
+(open a new terminal)
+$ sudo docker exec -it ${CONTAINER} bash
+$ cd /usr/share/hrpsys/samples/JVRC1
+$ ./clear-omninames.sh
+$ choreonoid --start-simulation sim_mc.cnoid
+
+```
