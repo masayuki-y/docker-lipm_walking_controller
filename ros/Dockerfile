@@ -381,10 +381,10 @@ WORKDIR /root/.config/mc_rtc
 RUN cp /root/github/mc_rtc_tutorial_controller/reach_box/mc_rtc.yaml .
 
 
-WORKDIR /root
-RUN mkdir ModelFiles \
-    && cd ModelFiles \
-    && git clone https://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:x-oauth-basic@github.com/masayuki-y/Model-files.git
+#WORKDIR /root
+#RUN mkdir ModelFiles \
+#    && cd ModelFiles \
+#    && git clone https://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:x-oauth-basic@github.com/masayuki-y/Model-files.git
 
 
 
