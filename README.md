@@ -50,7 +50,7 @@ $ git submodule update --init --recursive
   $ sudo make install
  ```
 
- Chake whether can use hrp4J model
+ Check whether can use hrp4J model
  ```
  $ roslaunch mc_surfaces_visualization display.launch robot:=HRP4J
  ```
